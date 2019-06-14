@@ -1,3 +1,15 @@
 body {
-    background-color: antiquewhite;
+    background-color: black;
+    color: lightgreen;
+}
+
+.art {
+    background-color: darkslategrey;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+
+.art a {
+    color: aquamarine;
 }

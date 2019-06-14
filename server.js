@@ -72,6 +72,7 @@ app.get("/articles", function (req, res) {
 
 // Get article by ID and its notes
 app.get("/articles/:id", function (req, res) {
+
     db.Article.findOne({ _id: req.params.id })
         .populate("note")
         .then(function (dbArticle) {
