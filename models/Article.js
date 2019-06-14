@@ -8,7 +8,7 @@ var ArticleSchema = new Schema({
     type: String,
     required: true
   },
-  content: {
+  blurb: {
     type: String,
     required: true
   },

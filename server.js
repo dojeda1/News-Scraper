@@ -17,6 +17,45 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
+app.get("/scrape", function (req, res) {
+
+    axios.get("https://www.ign.com/articles/").then(function (response) {
+        console.log("scrape beginning")
+
+        var $ = cheerio.load(response.data);
+
+        $(".listElmnt-blogItem").each(function (i, element) {
+
+            console.log("scraping Item")
+            var result = {};
+
+            result.title = $(this)
+                .children("a")
+                .text();
+            result.link = $(this)
+                .children("a")
+                .attr("href");
+
+            var fullText = $(this)
+                .children("p")
+                .text();
+
+            result.blurb = fullText.substring(fullText.indexOf("-") + 2, fullText.lastIndexOf(" R"))
+
+            db.Article.create(result)
+                .then(function (dbArticle) {
+                    console.log(dbArticle);
+                })
+                .catch(function (err) {
+                    console.log(err);
+                });
+        });
+
+        console.log("Scrape Complete");
+        res.send("Scrape Complete");
+    });
+});
+
 // Start the server
 app.listen(PORT, function () {
     console.log("App running on port " + PORT + "!");
