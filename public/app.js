@@ -1,18 +1,24 @@
 console.log("Hi")
 
+// $.getJSON("/scrape")
+
 $.getJSON("/articles", function (data) {
     // For each one
     for (let i in data) {
         // Display the apropos information on the page
 
-        var div = $("<div>")
-        div.addClass("art")
+        if (i < 11) {
 
-        div.append("<h3 data-id='" + data[i]._id + "'>" + data[i].title + "</h3>");
-        div.append("<p>" + data[i].blurb + "</p>");
-        div.append("<a href=" + data[i].link + ">View Article</p>");
+            var div = $("<div>")
+            div.addClass("art")
 
-        $("#articles").append(div)
+            div.append("<h3 data-id='" + data[i]._id + "'>" + data[i].title + "</h3>");
+            div.append("<p>" + data[i].blurb + "</p>");
+            div.append("<a href=" + data[i].link + ">View Article</p>");
+
+            $("#articles").append(div)
+        }
+
     }
 
 });
