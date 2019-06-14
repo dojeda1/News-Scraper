@@ -17,6 +17,8 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
+
+// get articles from IGN
 app.get("/scrape", function (req, res) {
 
     axios.get("https://www.ign.com/articles/").then(function (response) {
@@ -55,6 +57,31 @@ app.get("/scrape", function (req, res) {
         res.send("Scrape Complete");
     });
 });
+
+// Get all articles from DB
+app.get("/articles", function (req, res) {
+
+    db.Article.find({})
+        .then(function (dbArticle) {
+            res.json(dbArticle);
+        })
+        .catch(function (err) {
+            res.json(err);
+        });
+});
+
+// Get article by ID and its notes
+app.get("/articles/:id", function (req, res) {
+    db.Article.findOne({ _id: req.params.id })
+        .populate("note")
+        .then(function (dbArticle) {
+            res.json(dbArticle);
+        })
+        .catch(function (err) {
+            res.json(err);
+        });
+});
+
 
 // Start the server
 app.listen(PORT, function () {
