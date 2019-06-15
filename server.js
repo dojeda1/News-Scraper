@@ -24,13 +24,13 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 
 app.get("/", function (req, res) {
-    // cat.all(function (data) {
-    //     var hbsObject = {
-    //         cats: data
-    //     };
-    // console.log(hbsObject);
-    res.render("index", { this: "this" });
-    // });
+    db.Article.find({}).then(function (data) {
+        var hbsObject = {
+            articles: data
+        };
+        console.log(hbsObject);
+        res.render("index", hbsObject);
+    });
 });
 
 
@@ -42,20 +42,20 @@ app.get("/scrape", function (req, res) {
 
         var $ = cheerio.load(response.data);
 
-        $(".listElmnt-blogItem").each(function (i, element) {
+        $(".listElmnt").each(function (i, element) {
 
             console.log("scraping Item")
             var result = {};
 
             result.title = $(this)
-                .children("a")
+                .find(".listElmnt-storyHeadline")
                 .text();
             result.link = $(this)
-                .children("a")
+                .find(".listElmnt-storyHeadline")
                 .attr("href");
 
             var fullText = $(this)
-                .children("p")
+                .find("p")
                 .text();
 
             result.blurb = fullText.substring(fullText.indexOf("-") + 2, fullText.lastIndexOf(" R"))

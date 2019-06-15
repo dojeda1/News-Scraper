@@ -1,6 +1,17 @@
 <div class="container">
-  <h1>Hi</h1>
-  <p>This is a test page.</p>
-  <div id="articles"></div>
+
+  <div id="articles">
+    {{#each articles}}
+
+    <div class="art row">
+      <h3 data-id={{_id}}>{{title}}</h3>
+      <p>{{blurb}}</p>
+      <a href={{link}}>View Article</a>
+      <button class="btn btn-secondary">Save</button>
+    </div>
+
+    {{/each}}
+  </div>
+
 
 </div>

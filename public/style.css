@@ -13,3 +13,7 @@ body {
 .art a {
     color: aquamarine;
 }
+
+.art img {
+    width: 100%;
+}
