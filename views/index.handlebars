@@ -1,13 +1,52 @@
+<nav class="navbar navbar-expand-sm navbar-dark top-nav">
+  <a class="navbar-brand" href="#">IGN News Scraper</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03"
+    aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/scrape">Scrape</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Saved Articles</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-md-0">
+      <input class="form-control" type="text" placeholder="Search">
+    </form>
+  </div>
+</nav>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">IGN News Scraper</h1>
+    <p class="lead">Get the latest in gaming news.</p>
+  </div>
+</div>
+
 <div class="container">
 
   <div id="articles">
     {{#each articles}}
 
     <div class="art row">
-      <h3 data-id={{_id}}>{{title}}</h3>
-      <p>{{blurb}}</p>
-      <a href={{link}}>View Article</a>
-      <button class="btn btn-secondary">Save</button>
+      <div class="col-sm-12">
+
+
+        <h3 data-id={{_id}}>{{title}}</h3>
+        <p>{{blurb}}</p>
+      </div>
+
+      <div class="col-sm-12">
+
+
+        <a href={{link}}>View Article</a>
+        <button class="btn float-right">Save</button>
+
+      </div>
     </div>
 
     {{/each}}

@@ -3,6 +3,27 @@ body {
     color: lightgreen;
 }
 
+.jumbotron{
+	background-image: url('https://unity.com/sites/default/files/styles/social_media_sharing/public/2019-03/gaming-OG.jpg?itok=Wfv2jRo8');
+	background-size: cover;
+    background-repeat: no-repeat;
+    /* color: white; */
+    height: 500px;
+} 
+
+.top-nav {
+    background-color: lightgreen;
+    color: darkslategrey;
+}
+
+.top-nav a.nav-link{
+    color: darkslategrey !important;
+}
+
+.top-nav a.navbar-brand{
+    color: darkslategrey !important;
+}
+
 .art {
     background-color: darkslategrey;
     padding: 20px;
@@ -16,4 +37,14 @@ body {
 
 .art img {
     width: 100%;
+}
+
+.art button {
+    background-color: lightgreen;
+    color: darkslategrey;
+}
+
+.art button:hover {
+    background-color: aquamarine;
+    color: darkslategrey;
 }
