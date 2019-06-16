@@ -69,8 +69,8 @@ app.get("/scrape", function (req, res) {
                 });
         });
 
-        console.log("Scrape Complete");
-        res.send("Scrape Complete");
+        res.redirect("/");
+
     });
 });
 
@@ -99,6 +99,18 @@ app.get("/articles/:id", function (req, res) {
         });
 });
 
+// Clear Articles
+app.get("/clearArticles", function (req, res) {
+    db.Article.remove({}, function (error, response) {
+        if (error) {
+            console.log(error);
+        }
+        else {
+
+            res.redirect("/");
+        }
+    });
+});
 
 // Start the server
 app.listen(PORT, function () {

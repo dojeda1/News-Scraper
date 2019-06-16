@@ -7,6 +7,8 @@ body {
 	background-image: url('https://unity.com/sites/default/files/styles/social_media_sharing/public/2019-03/gaming-OG.jpg?itok=Wfv2jRo8');
 	background-size: cover;
     background-repeat: no-repeat;
+    background-color: red;
+    background-blend-mode: darken;
     /* color: white; */
     height: 500px;
 } 
