@@ -1,0 +1,30 @@
+{{> navBar}}
+
+<div class="container">
+
+    <div id="articles">
+        {{#each articles}}
+
+        <div class="art row">
+            <div class="col-sm-12">
+
+
+                <h3 data-id={{_id}}>{{title}}</h3>
+                <p>{{blurb}}</p>
+            </div>
+
+            <div class="col-sm-12">
+
+
+                <a href={{link}}>View Article</a>
+                <button class="btn float-right bg-danger">Delete</button>
+                <button class="btn float-right">Notes</button>
+
+            </div>
+        </div>
+
+        {{/each}}
+    </div>
+
+
+</div>

@@ -7,6 +7,7 @@ body {
 	background-image: url('https://unity.com/sites/default/files/styles/social_media_sharing/public/2019-03/gaming-OG.jpg?itok=Wfv2jRo8');
 	background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
     background-color: red;
     background-blend-mode: darken;
     /* color: white; */
@@ -20,6 +21,10 @@ body {
 
 .top-nav a.nav-link{
     color: darkslategrey !important;
+}
+
+.top-nav button:hover{
+    background-color: aquamarine;
 }
 
 .top-nav a.navbar-brand{
@@ -44,6 +49,7 @@ body {
 .art button {
     background-color: lightgreen;
     color: darkslategrey;
+    margin-left: 10px;
 }
 
 .art button:hover {

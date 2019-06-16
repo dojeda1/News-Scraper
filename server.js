@@ -33,6 +33,16 @@ app.get("/", function (req, res) {
     });
 });
 
+app.get("/saved", function (req, res) {
+    db.Article.find({}).then(function (data) {
+        var hbsObject = {
+            articles: data
+        };
+        console.log(hbsObject);
+        res.render("saved", hbsObject);
+    });
+});
+
 
 // get articles from IGN
 app.get("/scrape", function (req, res) {
