@@ -31,3 +31,23 @@ $(".remove-btn").on("click", function () {
         location.reload();
     })
 })
+
+$(".save-note").on("click", function () {
+
+    console.log("clicked")
+
+    var id = $(this).attr("data-id");
+    console.log(id)
+    var body = $("#new-note-" + id).val().trim();
+    console.log(body)
+    $.ajax({
+        url: "/newNote/" + id,
+        method: "POST",
+        data: {
+            id: id,
+            body: body
+        }
+    }).then(function () {
+        location.reload();
+    })
+})
