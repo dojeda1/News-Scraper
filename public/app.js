@@ -50,4 +50,15 @@ $(".save-note").on("click", function () {
     }).then(function () {
         location.reload();
     })
-})
+});
+
+$(".note-btn").on("click", function () {
+    var id = $(this).attr("data-id");
+
+    if ($("#notes-" + id).hasClass("d-none") === true) {
+        $("#notes-" + id).removeClass("d-none")
+    } else {
+        $("#notes-" + id).addClass("d-none")
+
+    }
+});

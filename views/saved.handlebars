@@ -18,18 +18,26 @@
 
                 <a href={{link}}>View Article</a>
                 <button class="btn float-right bg-danger remove-btn" data-id={{_id}}>Remove</button>
-                <button class="btn float-right" data-id={{_id}}>Notes</button>
+                <button class="btn float-right note-btn" data-id={{_id}}>Notes</button>
 
             </div>
         </div>
 
-        <div>
-            <input id="new-note-{{_id}}" type="text" placeholder="New Note"><button
-                class="btn btn-primary float-right save-note" data-id={{_id}}>Save</button>
+        <div id="notes-{{_id}}" class="note-area row d-none">
 
-            {{#each note}}
-            <p>{{body}}</p>
-            {{/each}}
+            <div class="col-sm-12">
+                <h4 class="text-center">Notes</h4>
+                <textarea id="new-note-{{_id}}" type="text" placeholder="New Note"></textarea>
+                <button class="btn btn-primary float-right save-note" data-id={{_id}}>Save</button>
+            </div>
+
+            <div class="col-sm-12">
+                <ul>
+                    {{#each note}}
+                    <li>{{body}}</li>
+                    {{/each}}
+                </ul>
+            </div>
 
         </div>
 

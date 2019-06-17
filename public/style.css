@@ -56,3 +56,15 @@ body {
     background-color: aquamarine;
     color: darkslategrey;
 }
+
+.note-area {
+    background-color: white;
+    color: darkslategrey;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+
+.note-area textarea{
+    width: 100%;
+}
