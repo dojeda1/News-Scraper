@@ -24,7 +24,7 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 
 app.get("/", function (req, res) {
-    db.Article.find({}).then(function (data) {
+    db.Article.find({ saved: false }).then(function (data) {
         var hbsObject = {
             articles: data
         };
@@ -34,7 +34,7 @@ app.get("/", function (req, res) {
 });
 
 app.get("/saved", function (req, res) {
-    db.Article.find({}).then(function (data) {
+    db.Article.find({ saved: true }).then(function (data) {
         var hbsObject = {
             articles: data
         };
@@ -57,6 +57,7 @@ app.get("/scrape", function (req, res) {
             console.log("scraping Item")
             var result = {};
 
+            result.saved = false;
             result.title = $(this)
                 .find(".listElmnt-storyHeadline")
                 .text();
@@ -107,6 +108,54 @@ app.get("/articles/:id", function (req, res) {
         .catch(function (err) {
             res.json(err);
         });
+});
+
+// save an article by id
+app.post("/saveArticle/:id", function (req, res) {
+    db.Article.update(
+        {
+            _id: req.params.id
+        },
+        {
+            $set: {
+                saved: true
+            }
+        },
+        function (error, edited) {
+            if (error) {
+                console.log(error);
+                res.send(error);
+            }
+            else {
+                console.log(edited);
+                res.send(edited);
+            }
+        }
+    );
+});
+
+// save an article by id
+app.post("/removeArticle/:id", function (req, res) {
+    db.Article.update(
+        {
+            _id: req.params.id
+        },
+        {
+            $set: {
+                saved: false
+            }
+        },
+        function (error, edited) {
+            if (error) {
+                console.log(error);
+                res.send(error);
+            }
+            else {
+                console.log(edited);
+                res.send(edited);
+            }
+        }
+    );
 });
 
 // Clear Articles

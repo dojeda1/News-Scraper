@@ -1,24 +1,33 @@
-console.log("Hi")
+$(".save-btn").on("click", function () {
 
-// $.getJSON("/scrape")
+    console.log("clicked")
 
-// $.getJSON("/articles", function (data) {
-//     // For each one
-//     for (let i in data) {
-//         // Display the apropos information on the page
+    var id = $(this).attr("data-id");
+    console.log(id)
+    $.ajax({
+        url: "/saveArticle/" + id,
+        method: "POST",
+        data: {
+            id: id
+        }
+    }).then(function () {
+        location.reload();
+    })
+})
 
-//         if (i < 11) {
+$(".remove-btn").on("click", function () {
 
-//             var div = $("<div>")
-//             div.addClass("art")
+    console.log("clicked")
 
-//             div.append("<h3 data-id='" + data[i]._id + "'>" + data[i].title + "</h3>");
-//             div.append("<p>" + data[i].blurb + "</p>");
-//             div.append("<a href=" + data[i].link + ">View Article</p>");
-
-//             $("#articles").append(div)
-//         }
-
-//     }
-
-// });
+    var id = $(this).attr("data-id");
+    console.log(id)
+    $.ajax({
+        url: "/removeArticle/" + id,
+        method: "POST",
+        data: {
+            id: id
+        }
+    }).then(function () {
+        location.reload();
+    })
+})
