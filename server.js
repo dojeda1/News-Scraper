@@ -145,7 +145,8 @@ app.post("/removeArticle/:id", function (req, res) {
         },
         {
             $set: {
-                saved: false
+                saved: false,
+                note: []
             }
         },
         function (error, edited) {
@@ -163,7 +164,7 @@ app.post("/removeArticle/:id", function (req, res) {
 
 // Clear Articles
 app.get("/clearArticles", function (req, res) {
-    db.Article.remove({}, function (error, response) {
+    db.Article.remove({ saved: false }, function (error, response) {
         if (error) {
             console.log(error);
         }
