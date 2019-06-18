@@ -68,3 +68,21 @@ body {
 .note-area textarea{
     width: 100%;
 }
+
+.note-area button {
+ background-color: darkslategrey;
+    color: white;
+    margin-left: 10px;
+}
+
+.note-area button:hover {
+    background-color: lightgreen;
+    color:white;
+}
+
+.remove-note {
+    color: red;
+    font-weight: bolder;
+    margin-right: 10px;
+    cursor: pointer;
+}

@@ -2,6 +2,14 @@
 
 <div class="container">
 
+    {{#if articles}}
+
+    <div class="row pt-5 pb-3 text-center">
+        <div class="col">
+            <h1>Saved Articles</h1>
+        </div>
+    </div>
+
     <div id="articles">
         {{#each articles}}
 
@@ -28,15 +36,15 @@
             <div class="col-sm-12">
                 <h4 class="text-center">Notes</h4>
                 <textarea id="new-note-{{_id}}" type="text" placeholder="New Note"></textarea>
-                <button class="btn btn-primary float-right save-note" data-id={{_id}}>Save</button>
+                <button class="btn float-right save-note" data-id={{_id}}>Save</button>
             </div>
 
             <div class="col-sm-12">
-                <ul>
-                    {{#each note}}
-                    <li>{{body}}</li>
-                    {{/each}}
-                </ul>
+
+                {{#each note}}
+                <p data-id={{_id}} class="thing"><span class="remove-note">X</span>{{body}}</p>
+                {{/each}}
+
             </div>
 
         </div>
@@ -44,5 +52,12 @@
         {{/each}}
     </div>
 
+    {{else}}
+
+    <div class="row pt-5 text-center">
+        <h1>No articles saved</h1>
+    </div>
+
+    {{/if}}
 
 </div>

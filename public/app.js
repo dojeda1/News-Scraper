@@ -52,6 +52,23 @@ $(".save-note").on("click", function () {
     })
 });
 
+$(".thing").on("click", function () {
+
+    console.log("clicked")
+
+    var id = $(this).attr("data-id");
+    console.log(id)
+    $.ajax({
+        url: "/removeNote/" + id,
+        method: "GET",
+        data: {
+            _id: id
+        }
+    }).then(function () {
+        location.reload();
+    })
+})
+
 $(".note-btn").on("click", function () {
     var id = $(this).attr("data-id");
 

@@ -9,6 +9,8 @@
 
 <div class="container">
 
+  {{#if articles}}
+
   <div id="articles">
     {{#each articles}}
 
@@ -30,6 +32,12 @@
 
     {{/each}}
   </div>
+  {{else}}
 
+  <div class="row text-center">
+    <h1>No articles found</h1>
+  </div>
+
+  {{/if}}
 
 </div>
