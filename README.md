@@ -1,4 +1,4 @@
-# Book Finder
+# IGN News Scraper
 
 ### About this Project
 
