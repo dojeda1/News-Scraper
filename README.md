@@ -6,6 +6,8 @@ Scrapes data from the IGN artivle wesite and displays it on screen. Articles and
 
   **Visit Web App [Here!](https://news-scraper-mongodb-cheerio.herokuapp.com/)**
 
+![Web App Image](./demo.png)
+
 ### Technologies used
 
 * HTML
